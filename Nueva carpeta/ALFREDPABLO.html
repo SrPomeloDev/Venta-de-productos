@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>PRUEBA-WEB</title>
+</head>
+<body>
+    <div class="pre">
+        <h1>MI PAGINA</h1>
+        <button class="btn-modo" id = "btn-modo" onclick="modoPag()">Modo Oscuro</button>
+    </div> 
+
+    <div class="perfiles">
+        <h1>MIS PERFILES</h1>
+        <input type="text" 
+        id="buscador"
+         placeholder="BUSCAR POR NOMBRE"
+          class="busqueda">
+    </div>
+
+    <div class="contenedor-padre">
+        <div class="alfred">
+            <details class="deslizar">
+                <summary>
+                    <i class="fa-solid fa-circle-user" style="font-size: 50px;"></i>
+                    <h1>ALFRED</h1>
+                </summary>
+                <div class="p1">
+                    <p>"Transformando ideas en hardware funcional. Mi pasión es la electrónica de potencia, los sistemas embebidos y la arquitectura de componentes que conectan el mundo digital con la realidad."</p>
+                </div>
+                <div class="alf1">
+                    <img src="imagenes/inven.png" alt="alfred">
+                    <div class="botones">
+                        <a href="https://www.instagram.com/a.david_cabrera.d?igsh=MWl4b2toajl4MHV1Zw=="><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="elvis">
+            <details class="deslizar" >
+                <summary  >                   
+                    <i  class="fa-solid fa-circle-user" style="font-size: 50px;"></i>
+                    <h1>Elvis</h1>
+                </summary>
+                <div class="p2" >
+                    <p>"Dedicado a la medicina integral con un enfoque humano y preventivo. Mi compromiso es acompañar a cada paciente en su camino hacia el bienestar, combinando evidencia científica con una escucha activa para transformar la atención médica en una experiencia de confianza."</p>
+                    <div class="pab1">
+                        <img src="imagenes/ricki-martin.png" alt="elvis">
+                        <div class="botones">
+                            <a  id = "abajo" href="https://www.instagram.com/pablo_moya20?igsh=MTN6Njk2bjFnaW0zcQ%3D%3D&utm_source=qr_code_scanner&utm_medium=referral"><i class="fa-brands fa-instagram"></i></a> 
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+         <div class="pablo">
+            <details class="deslizar">
+                <summary >
+                    <i class="fa-solid fa-circle-user" style="font-size: 50px;"></i>
+                    <h1>PABLO</h1>
+                </summary>
+                <div class="p2">
+                    <p>"Construyendo el futuro bit a bit. Experto en ingeniería de software y gestión de redes, enfocado en diseñar sistemas inteligentes que transforman la complejidad en eficiencia operativa."</p>
+                    <div class="pab1">
+                        <img src="imagenes/oscuro.png" alt="pablo">
+                        <div class="botones">
+                            <a href="https://www.instagram.com/pablo_moya20?igsh=MTN6Njk2bjFnaW0zcQ%3D%3D&utm_source=qr_code_scanner&utm_medium=referral"><i class="fa-brands fa-instagram"></i></a> 
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </div>  
+    <script src="scrip.js"></script>
+</body>
+</html>

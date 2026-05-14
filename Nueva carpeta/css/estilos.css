@@ -1,0 +1,163 @@
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../imagenes/oscuro.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 98%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.btn-modo{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    border: 1px solid;
+    color: white;
+    border-radius: 1px solid rgba(0, 0, 255, 0.386);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-family: cursive;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+
+}
+
+.btn-modo:hover {
+    transform: escale(1.1);
+}
+
+h1 {
+    color: white;
+    font-family: cursive;
+    text-align: center;
+}
+
+.pre {
+    font-size: 40px;
+    color: white;
+    font-family: cursive;
+    text-align:right;
+}
+.contenedor-padre {
+    display: flex;
+    font-family: cursive;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.alfred,.pablo,.elvis {
+    background-color: rgba(255, 255, 255, 0.185);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 255, 0.386);
+   box-shadow: 0px 10px 30px rgba(0, 150, 255, 0.5);
+    text-align: center;
+    flex : 1;
+    min-width: 300px;
+    max-width: 350px;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.alfred:hover,.pablo:hover, .elvis:hover{ transform: scale(1.05);
+}
+
+.alfred { color: rgb(240, 240, 243); }
+.pablo { color: rgb(253, 248, 248); }
+.elvis { color: rgb(253, 253, 253); }
+
+.p1 { color: rgb(247, 246, 246); }
+.p2 { color: rgb(254, 255, 255); }
+
+.alf1 img, .pab1 img {
+    width: 100%;
+   height: auto;
+   object-fit: cover;
+   border-radius: 20px;
+}
+
+.botones {
+    font-size: 70px;
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+}
+summary h1 {
+color: #fff;
+    text-shadow:
+        0 0 20px #0041cc,
+        0 0 40px #000000;
+}
+summary:hover h1 {
+    transform: scale(1.05);
+}
+summary::-webkit-details-marker {
+    display: none;
+}
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+.alfred, .pablo, .elvis , .perfiles{
+    animation: aparecer 1s ease-out;
+}
+.alfred summary i, .pablo summary i , .elvis summary i {
+    transition: all 0.4s ease;
+}
+summary:hover i {
+    transform: scale(1.5) rotate(360deg);
+    color: #002a5b;
+}
+details[open] summary ~ * {
+    animation: aparecer 1s ease-out;
+}
+.busqueda {
+    position : fixed;
+    top: 80px;  
+    right: 20px;
+    padding: 12px 20px;
+    width: 300px;
+    border-radius: 25px;
+    border: 1px solid rgba(0, 0, 255, 0.386);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    font-family: cursive;
+}
+.filtros-ocultos {
+    display: none !important;
+}
+mark {
+    background-color: rgba(0, 13, 255, 0.6);
+    color: white;
+    padding: 0 2px;
+    border-radius: 4px;
+}
+
