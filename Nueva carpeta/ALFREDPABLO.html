@@ -1,81 +1,344 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>PRUEBA-WEB</title>
+    <title>La Bahía | Marisquería - Pescado y Mariscos Crudos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="pre">
-        <h1>MI PAGINA</h1>
-        <button class="btn-modo" id = "btn-modo" onclick="modoPag()">Modo Oscuro</button>
-    </div> 
 
-    <div class="perfiles">
-        <h1>MIS PERFILES</h1>
-        <input type="text" 
-        id="buscador"
-         placeholder="BUSCAR POR NOMBRE"
-          class="busqueda">
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast" role="alert">
+        <div class="toast-inner">
+            <span class="toast-emoji" id="toastEmoji">🦐</span>
+            <div class="toast-text">
+                <strong id="toastTitle">¡Añadido!</strong>
+                <span id="toastMsg">Producto en tu carrito</span>
+            </div>
+            <button class="toast-close" onclick="closeToast()">✕</button>
+        </div>
+        <div class="toast-bar"></div>
     </div>
 
-    <div class="contenedor-padre">
-        <div class="alfred">
-            <details class="deslizar">
-                <summary>
-                    <i class="fa-solid fa-circle-user" style="font-size: 50px;"></i>
-                    <h1>ALFRED</h1>
-                </summary>
-                <div class="p1">
-                    <p>"Transformando ideas en hardware funcional. Mi pasión es la electrónica de potencia, los sistemas embebidos y la arquitectura de componentes que conectan el mundo digital con la realidad."</p>
+    <!-- HEADER -->
+    <header class="header" id="mainHeader">
+        <div class="container header-inner">
+            <div class="logo-wrap">
+                <img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt="La Bahía Logo" class="logo-img">
+                <div class="logo-texts">
+                    <span class="logo-name">La Bahía</span>
+                    <span class="logo-tagline">⚓ Marisquería</span>
                 </div>
-                <div class="alf1">
-                    <img src="imagenes/inven.png" alt="alfred">
-                    <div class="botones">
-                        <a href="https://www.instagram.com/a.david_cabrera.d?igsh=MWl4b2toajl4MHV1Zw=="><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <nav class="nav" id="mainNav">
+                <button class="nav-btn active" data-section="home">Inicio</button>
+                <button class="nav-btn" data-section="products">Catálogo</button>
+                <button class="nav-btn" data-section="specials">Especiales</button>
+                <button class="nav-btn" data-section="about">Nosotros</button>
+                <button class="nav-btn cart-nav-btn" data-section="cart">
+                    🛒 Carrito
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ==================== HOME ==================== -->
+        <section id="home" class="section active">
+
+            <!-- HERO -->
+            <div class="hero">
+                <div class="hero-logo-bg">
+                    <img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt="">
+                </div>
+                <div class="wave-overlay"></div>
+                <div class="container hero-content">
+                    <div class="hero-badge">✦ Directo del Mar a tu Mesa ✦</div>
+                    <h1 class="hero-title">
+                        El sabor auténtico<br>
+                        <em>de la bahía</em>
+                    </h1>
+                    <p class="hero-desc">
+                        Mariscos frescos seleccionados cada mañana. Calidad de restaurante, precio de mercado.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn-primary" onclick="showSection('products')">Ver Catálogo</button>
+                        <a class="btn-whatsapp" href="https://wa.me/59167823905" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Pedir por WhatsApp
+                        </a>
                     </div>
                 </div>
-            </details>
-        </div>
+                <div class="hero-stats">
+                    <div class="container stats-row">
+                        <div class="stat"><div class="stat-num">100%</div><div class="stat-lbl">Fresco</div></div>
+                        <div class="stat-div"></div>
+                        <div class="stat"><div class="stat-num">+10</div><div class="stat-lbl">Años de experiencia</div></div>
+                        <div class="stat-div"></div>
+                        <div class="stat"><div class="stat-num">Lun–Dom</div><div class="stat-lbl">8am – 5pm</div></div>
+                        <div class="stat-div"></div>
+                        <div class="stat"><div class="stat-num">4+</div><div class="stat-lbl">Variedades premium</div></div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="elvis">
-            <details class="deslizar" >
-                <summary  >                   
-                    <i  class="fa-solid fa-circle-user" style="font-size: 50px;"></i>
-                    <h1>Elvis</h1>
-                </summary>
-                <div class="p2" >
-                    <p>"Dedicado a la medicina integral con un enfoque humano y preventivo. Mi compromiso es acompañar a cada paciente en su camino hacia el bienestar, combinando evidencia científica con una escucha activa para transformar la atención médica en una experiencia de confianza."</p>
-                    <div class="pab1">
-                        <img src="imagenes/ricki-martin.png" alt="elvis">
-                        <div class="botones">
-                            <a  id = "abajo" href="https://www.instagram.com/pablo_moya20?igsh=MTN6Njk2bjFnaW0zcQ%3D%3D&utm_source=qr_code_scanner&utm_medium=referral"><i class="fa-brands fa-instagram"></i></a> 
+            <!-- FEATURES BAND -->
+            <div class="features-band">
+                <div class="container features-row">
+                    <div class="feature-item">
+                        <div class="feature-icon">🧊</div>
+                        <div><strong>Cadena de frío</strong><span>Temperatura controlada</span></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🚢</div>
+                        <div><strong>Del mar directo</strong><span>Sin intermediarios</span></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚖️</div>
+                        <div><strong>Peso exacto</strong><span>Lo que pagas recibes</span></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📲</div>
+                        <div><strong>Pedido fácil</strong><span>Directo por WhatsApp</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCTOS DESTACADOS -->
+            <div class="container section-block">
+                <div class="section-label">⚓ Lo más pedido</div>
+                <h2 class="section-title">Nuestros Favoritos</h2>
+                <div class="featured-grid" id="featuredGrid"></div>
+                <div class="center-btn">
+                    <button class="btn-outline" onclick="showSection('products')">Ver catálogo completo →</button>
+                </div>
+            </div>
+
+            <!-- BANNER CALIDAD -->
+            <div class="quality-banner">
+                <div class="quality-bg-logo">
+                    <img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt="">
+                </div>
+                <div class="container quality-content">
+                    <h2>"Cada pieza pasa por nuestras<br><em>manos antes de llegar a las tuyas.</em>"</h2>
+                    <p>Seleccionamos con cuidado cada producto para asegurar que llegue en su mejor estado.</p>
+                    <button class="btn-primary" onclick="showSection('about')">Conoce nuestra historia</button>
+                </div>
+            </div>
+
+            <!-- CÓMO FUNCIONA -->
+            <div class="container section-block">
+                <div class="section-label">📋 Es muy fácil</div>
+                <h2 class="section-title">¿Cómo Hacer tu Pedido?</h2>
+                <div class="steps-row">
+                    <div class="step">
+                        <div class="step-num">01</div>
+                        <div class="step-icon">🛒</div>
+                        <h3>Elige</h3>
+                        <p>Selecciona tus mariscos favoritos del catálogo</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-num">02</div>
+                        <div class="step-icon">📱</div>
+                        <h3>Envía</h3>
+                        <p>Tu pedido va directo a nuestro WhatsApp</p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-num">03</div>
+                        <div class="step-icon">🎉</div>
+                        <h3>Disfruta</h3>
+                        <p>Confirma y recibe tu marisco fresquísimo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CATÁLOGO ==================== -->
+        <section id="products" class="section">
+            <div class="page-hero mini-hero">
+                <div class="hero-logo-bg"><img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt=""></div>
+                <div class="container">
+                    <div class="section-label">🐚 Selección del día</div>
+                    <h2 class="page-title">Nuestro Catálogo</h2>
+                    <p>Todos frescos y de primera calidad</p>
+                </div>
+            </div>
+            <div class="container section-block">
+                <div class="filter-bar" id="filterBar"></div>
+                <div class="products-grid" id="productsList"></div>
+            </div>
+        </section>
+
+        <!-- ==================== ESPECIALES ==================== -->
+        <section id="specials" class="section">
+            <div class="page-hero mini-hero">
+                <div class="hero-logo-bg"><img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt=""></div>
+                <div class="container">
+                    <div class="section-label">⭐ Ofertas</div>
+                    <h2 class="page-title">Especiales & Combos</h2>
+                    <p>Paquetes especiales al mejor precio</p>
+                </div>
+            </div>
+            <div class="container section-block">
+                <div class="combos-grid" id="combosGrid"></div>
+                <div class="freshness-card">
+                    <div class="freshness-inner">
+                        <div class="fresh-icon">🌊</div>
+                        <div>
+                            <h3>¿Cómo garantizamos la frescura?</h3>
+                            <ul>
+                                <li>✔ Ojos brillantes y claros</li>
+                                <li>✔ Olor a mar, no a pescado</li>
+                                <li>✔ Carne firme al tacto</li>
+                                <li>✔ Entregado en el mismo día</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </details>
-        </div>
+            </div>
+        </section>
 
-         <div class="pablo">
-            <details class="deslizar">
-                <summary >
-                    <i class="fa-solid fa-circle-user" style="font-size: 50px;"></i>
-                    <h1>PABLO</h1>
-                </summary>
-                <div class="p2">
-                    <p>"Construyendo el futuro bit a bit. Experto en ingeniería de software y gestión de redes, enfocado en diseñar sistemas inteligentes que transforman la complejidad en eficiencia operativa."</p>
-                    <div class="pab1">
-                        <img src="imagenes/oscuro.png" alt="pablo">
-                        <div class="botones">
-                            <a href="https://www.instagram.com/pablo_moya20?igsh=MTN6Njk2bjFnaW0zcQ%3D%3D&utm_source=qr_code_scanner&utm_medium=referral"><i class="fa-brands fa-instagram"></i></a> 
+        <!-- ==================== NOSOTROS ==================== -->
+        <section id="about" class="section">
+            <div class="page-hero mini-hero">
+                <div class="hero-logo-bg"><img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt=""></div>
+                <div class="container">
+                    <div class="section-label">⚓ Nuestra historia</div>
+                    <h2 class="page-title">Sobre La Bahía</h2>
+                </div>
+            </div>
+            <div class="container section-block">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Más de 10 años trayendo el mar a tu mesa</h3>
+                        <p>En <strong>La Bahía Marisquería</strong> somos especialistas en la selección y distribución de los mejores mariscos y pescados frescos. Nuestra pasión por el mar nos lleva a escoger cada pieza con cuidado.</p>
+                        <p>Trabajamos directamente con pescadores locales, eliminando intermediarios para ofrecerte el mejor precio sin sacrificar la calidad que nos caracteriza.</p>
+                        <div class="about-values">
+                            <div class="value-tag">🐟 Frescura garantizada</div>
+                            <div class="value-tag">🤝 Trato justo</div>
+                            <div class="value-tag">⚖️ Peso exacto</div>
+                            <div class="value-tag">❤️ Pasión por el mar</div>
+                        </div>
+                    </div>
+                    <div class="about-logo-wrap">
+                        <img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt="La Bahía Logo" class="about-logo">
+                    </div>
+                </div>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h4>Ubicación</h4>
+                        <p>Carretera Principal KM 6</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📞</div>
+                        <h4>Pedidos</h4>
+                        <p>+591 67823905</p>
+                        <a href="https://wa.me/59167823905" class="btn-wa-small" target="_blank">💬 WhatsApp</a>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">⏰</div>
+                        <h4>Horario</h4>
+                        <p>Lunes a Domingo<br><strong>8:00 AM – 5:00 PM</strong></p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🐙</div>
+                        <h4>Especialidad</h4>
+                        <p>Pescado y mariscos<br>crudos de primera</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CARRITO ==================== -->
+        <section id="cart" class="section">
+            <div class="page-hero mini-hero">
+                <div class="hero-logo-bg"><img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt=""></div>
+                <div class="container">
+                    <div class="section-label">🛒 Tu selección</div>
+                    <h2 class="page-title">Tu Pedido</h2>
+                </div>
+            </div>
+            <div class="container section-block">
+                <div id="cartContent" style="display:none">
+                    <div class="cart-layout">
+                        <div class="cart-items-wrap">
+                            <table class="cart-table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Subtotal</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartItems"></tbody>
+                            </table>
+                        </div>
+                        <div class="cart-summary-card">
+                            <img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt="" class="summary-logo">
+                            <h3>Resumen del Pedido</h3>
+                            <div class="summary-rows" id="summaryRows"></div>
+                            <div class="summary-total">
+                                <span>Total</span>
+                                <span id="cartTotal">Bs. 0.00</span>
+                            </div>
+                            <button class="btn-checkout" id="checkoutBtn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                Enviar Pedido por WhatsApp
+                            </button>
+                            <button class="btn-clear" id="clearCartBtn">🗑 Vaciar carrito</button>
                         </div>
                     </div>
                 </div>
-            </details>
+                <div id="emptyCart" class="empty-cart">
+                    <div class="empty-icon">🌊</div>
+                    <h3>Tu carrito está vacío</h3>
+                    <p>Aún no has seleccionado ningún marisco</p>
+                    <button class="btn-primary" onclick="showSection('products')">Explorar Catálogo</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-bg-logo">
+            <img src="WhatsApp_Image_2026-05-14_at_16_54_12.png" alt="">
         </div>
-    </div>  
-    <script src="scrip.js"></script>
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <img src="imagen/WhatsApp Image 2026-05-14 at 16.54.12.png" alt="La Bahía" class="footer-logo-img">
+                <div><strong>La Bahía</strong><span>⚓ Marisquería</span></div>
+            </div>
+            <div class="footer-links">
+                <button onclick="showSection('home')">Inicio</button>
+                <button onclick="showSection('products')">Catálogo</button>
+                <button onclick="showSection('specials')">Especiales</button>
+                <button onclick="showSection('about')">Nosotros</button>
+            </div>
+            <div class="footer-contact">
+                <a href="https://wa.me/59167823905" target="_blank" class="footer-wa">💬 +591 67823905</a>
+                <span>⏰ Lun–Dom: 8am – 5pm</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 La Bahía Marisquería · Pescado y Mariscos Crudos · Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
